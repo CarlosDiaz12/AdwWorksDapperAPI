@@ -19,5 +19,13 @@ namespace AdwWorksDapperAPI.Controllers
             var result = _productRepository.GetProducts();
             return Ok(result);
         }
+
+        [HttpGet("{Id:int}")]
+        public IActionResult Get(int Id)
+        {
+            var result = _productRepository.GetProduct(Id);
+            if(result == null) return NotFound(new { message = "Resource not found."});
+            return Ok(result);
+        }
     }
 }

@@ -32,7 +32,9 @@ namespace AdwWorksDapperAPI.Repositories
 
         public Product GetProduct(int productId)
         {
-            throw new System.NotImplementedException();
+            using IDbConnection dbConnection = Connection;
+            dbConnection.Open();
+            return dbConnection.QueryFirstOrDefault<Product>("SELECT * FROM [SalesLT].[Product] WHERE ProductID = @productId", new { productId });
         }
 
         public IEnumerable<Product> GetProducts()
