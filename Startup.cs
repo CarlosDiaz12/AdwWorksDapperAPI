@@ -1,3 +1,6 @@
+using AdwWorksDapperAPI.Infrastructure;
+using AdwWorksDapperAPI.Interfaces;
+using AdwWorksDapperAPI.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,6 +29,8 @@ namespace AdwWorksDapperAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.Configure<AdwWorksConfig>(Configuration.GetSection("AdwWorksConfig"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
