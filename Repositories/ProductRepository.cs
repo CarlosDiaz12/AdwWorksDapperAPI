@@ -41,7 +41,7 @@ namespace AdwWorksDapperAPI.Repositories
         {
             using IDbConnection dbConnection = Connection;
             dbConnection.Open();
-            return dbConnection.Query<Product>("SELECT top 10 * FROM [SalesLT].[Product]");
+            return dbConnection.Query<Product>("SELECT top 100 * FROM [SalesLT].[Product]");
         }
 
         public bool ProductExists(int productId)
